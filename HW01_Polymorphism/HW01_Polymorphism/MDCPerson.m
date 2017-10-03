@@ -7,28 +7,30 @@
 //
 
 #import "MDCPerson.h"
+#ifdef DEBUG
+#define NSLog(FORMAT, ...) fprintf(stderr,"%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define NSLog(...) {}
+#endif
 
 @implementation MDCPerson
 
-//-(void)setMDCPersonRole:(NSString *)mdcRole{
-//   role = mdcRole;
-//}
-//
-//-(void)setMDCPersonCampus:(NSString *)mdcCampus{
-//    campus = mdcCampus;
-//}
 
--(id)initWithName:(NSString *)stuName
-    andWithGender:(NSString *)stuGender
-    andWithCampus:(NSString *)stuCampus
-      andWithRole:(NSString *)stuRole
+-(id)initWithName:(NSString *)mdcPerName
+    andWithGender:(NSString *)mdcPerGender
+    andWithCampus:(NSString *)mdcPerCampus
+      andWithRole:(NSString *)mdcPerRole
 
 {
-    [super setPersonName:stuName];
-    [super setPersonGender:stuGender];
-    [self setMDCPersonCampus:stuCampus];
-    [self setMDCPersonRole:stuRole];
+    [super setPersonName:mdcPerName];
+    [super setPersonGender:mdcPerGender];
+    [self setMDCPersonCampus:mdcPerCampus];
+    [self setMDCPersonRole:mdcPerRole];
     return self;
 }
 
+-(void)moreInfo;
+{
+NSLog(@" %@ at the %@ campus.", _mdcRole, _mdcCampus);
+}
 @end

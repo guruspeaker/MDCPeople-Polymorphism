@@ -17,4 +17,7 @@
 @property (getter=getPersonName, setter=setPersonName: )NSString* pName;
 @property (getter=getPersonGender, setter=setPersonGender: )NSString* pGender;
 
+-(id)Name:(NSString *) pName Gender:(NSString *) pGender;
+-(void)moreInfo;
+
 @end

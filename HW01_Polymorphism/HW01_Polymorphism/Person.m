@@ -7,10 +7,25 @@
 //
 
 #import "Person.h"
+#ifdef DEBUG
+#define NSLog(FORMAT, ...) fprintf(stderr,"%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define NSLog(...) {}
+#endif
 
 @implementation Person
 
 {}
+-(id)Name:(NSString *) pName Gender:(NSString *) pGender
+{
+    [self setPersonName:pName];
+    [self setPersonGender:pGender];
+    return self;
+    
 
+}
+-(void)moreInfo
+{
+     NSLog(@"");}
 
 @end

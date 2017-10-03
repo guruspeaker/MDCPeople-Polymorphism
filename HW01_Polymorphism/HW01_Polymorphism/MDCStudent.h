@@ -14,12 +14,16 @@
     NSString *classification;
 }
 
-@property NSString *campus, *role, *name, *gender;
+@property (getter=getMajor, setter=setMajor:) NSString * sMajor;
+@property (getter=getClassification, setter=setClassification:) NSString * sClassification;
 
 
--(void)setStudentMajor:(NSString *)StudentMajor;
--(void)setStudentClass:(NSString *)StudentClass;
+-(id)initWithName:(NSString *)sName
+    andWithGender:(NSString *)sGender
+    andWithCampus:(NSString *)sCampus
+      andWithRole:(NSString *)sRole
+     andWithMajor:(NSString *)sMajor
+andWithClassification:(NSString *)sClassification;
 
-
-
+-(void)moreInfo;
 @end

@@ -14,10 +14,15 @@
     NSString *department;
 }
 
-@property NSString *campus, *role, *name, *gender;
+@property (getter=getProTeachingSecialty, setter=setProTeachingSecialty: )NSString* proTeachingSpec;
+@property (getter=getProDepartment, setter=setProDepartment: )NSString* proDepartment;
 
-
--(void)setProTeachingSpecialty:(NSString *)proTeachingSpecialty;
--(void)setProDepartment:(NSString *)proDepartment;
-
+-(id)initWithName:(NSString *)proName
+    andWithGender:(NSString *)proGender
+    andWithCampus:(NSString *)proCampus
+      andWithRole:(NSString *)proRole
+andWithTeachingSpec:(NSString *)proTeachingSpec
+andWithDepartment:(NSString *)proDepartment;
+-(void)moreInfo;
 @end
+

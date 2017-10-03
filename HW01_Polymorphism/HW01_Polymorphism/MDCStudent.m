@@ -7,16 +7,34 @@
 //
 
 #import "MDCStudent.h"
+#ifdef DEBUG
+#define NSLog(FORMAT, ...) fprintf(stderr,"%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define NSLog(...) {}
+#endif
 
 @implementation MDCStudent
 
--(void)setStudentMajor:(NSString *)StudentMajor
-    {major = StudentMajor;}
--(void)setStudentClass:(NSString *)StudentClass
-    {classification = StudentClass;}
+-(id)initWithName:(NSString *)sName
+    andWithGender:(NSString *)sGender
+    andWithCampus:(NSString *)sCampus
+      andWithRole:(NSString *)sRole
+     andWithMajor:(NSString *)sMajor
+andWithClassification:(NSString *)sClassification
+{
+    [super setPersonName:sName];
+    [super setPersonGender:sGender];
+    [super setMDCPersonCampus:sCampus];
+    [super setMDCPersonRole:sRole];
+    [self setMajor:sMajor];
+    [self setClassification:sClassification];
+    return self;
+}
 
-
-
-
-
+-(void)moreInfo;
+{
+    [super moreInfo];
+    NSLog(@"I am a %@ and I'm majoring in %@.", _sClassification, _sMajor);
+    
+}
 @end

@@ -17,9 +17,10 @@
 @property (getter=getMDCPersonCampus, setter=setMDCPersonCampus: )NSString* mdcCampus;
 @property (getter=getMDCPersonRole, setter=setMDCPersonRole: )NSString* mdcRole;
 
--(id)initWithName:(NSString *)stuName
-    andWithGender:(NSString *)stuGender
-    andWithCampus:(NSString *)stuCampus
-      andWithRole:(NSString *)stuRole;
+-(id)initWithName:(NSString *)mdcPerName
+    andWithGender:(NSString *)mdcPerGender
+    andWithCampus:(NSString *)mdcPerCampus
+      andWithRole:(NSString *)mdcPerRole;
+-(void)moreInfo;
 
 @end

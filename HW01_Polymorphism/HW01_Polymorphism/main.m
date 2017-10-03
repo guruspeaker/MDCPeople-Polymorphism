@@ -12,6 +12,11 @@
 #import "Person.h"
 #import "MDCPerson.h"
 
+#ifdef DEBUG
+#define NSLog(FORMAT, ...) fprintf(stderr,"%s\n", [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define NSLog(...) {}
+#endif
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -19,19 +24,61 @@ int main(int argc, const char * argv[]) {
         
         // create a few Students
 
-        MDCStudent* jim = [[MDCStudent alloc]initWithName:@"Jim Smith" andWithGender:@"Male" andWithCampus:@"Wolfson" andWithRoll:@"Student"];
+        MDCStudent* jim =
+            [[MDCStudent alloc]
+             initWithName:@"Jim Smith"
+             andWithGender:@"Male"
+             andWithCampus:@"Wolfson"
+             andWithRole:@"Student"
+             andWithMajor:@"BS-IST"
+             andWithClassification:@"Senior"];
+             
+        MDCStudent* joe =
+            [[MDCStudent alloc]
+             initWithName:@"Joe Cantore"
+             andWithGender:@"Male"
+             andWithCampus:@"North"
+             andWithRole:@"Student"
+             andWithMajor:@"Computer Science"
+             andWithClassification:@"Freshman"];
         
-        MDCStudent* joe = [[MDCStudent alloc]initWithName:@"Joe Cantore" andWithGender:@"Male" andWithCampus:@"North" andWithRoll:@"Student" andWithMajor:@"Computer Science" andWithClass:@"Freshman"];
-        
-        MDCStudent* sally = [[MDCStudent alloc]initWithName:@"Sally Struthers" andWithGender:@"Female" andWithCampus:@"Kendall" andWithRoll:@"Student" andWithMajor:@"Graphic Design" andWithClass:@"Sophomore"];
+        MDCStudent* sally =
+            [[MDCStudent alloc]
+             initWithName:@"Sally Struthers"
+             andWithGender:@"Female"
+             andWithCampus:@"Kendall"
+             andWithRole:@"Student"
+             andWithMajor:@"Graphic Design"
+             andWithClassification:@"Sophomore"];
         
         // create a few Professors
         
-        MDCProfessor* mike = [[MDCProfessor alloc]initWithName:@"Mike Mendoza" andWithGender:@"Male" andWithCampus:@"North" andWithRoll:@"Professor" andWithSpecialty:@"Mathamatics" andWithDept:@"Math"];
+        MDCProfessor* mike =
+            [[MDCProfessor alloc]
+             initWithName:@"Mike Mendoza"
+             andWithGender:@"Male"
+             andWithCampus:@"North"
+             andWithRole:@"Professor"
+             andWithTeachingSpec:@"Mathamatics"
+             andWithDepartment:@"Math"];
         
-        MDCProfessor* nancy = [[MDCProfessor alloc]initWithName:@"Nancy Williams" andWithGender:@"Female" andWithCampus:@"Homestead" andWithRoll:@"Professor" andWithSpecialty:@"Nursing" andWithDept:@"Medical Services"];
+        MDCProfessor* nancy =
+            [[MDCProfessor alloc]
+             initWithName:@"Nancy Williams"
+             andWithGender:@"Female"
+             andWithCampus:@"Homestead"
+             andWithRole:@"Professor"
+             andWithTeachingSpec:@"Nursing"
+             andWithDepartment:@"Medical Services"];
         
-        MDCProfessor* philip = [[MDCProfessor alloc]initWithName:@"Philip Peterson" andWithGender:@"Male" andWithCampus:@"Downtown" andWithRoll:@"Professor" andWithSpecialty:@"English" andWithDept:@"Humanities"];
+        MDCProfessor* philip =
+            [[MDCProfessor alloc]
+             initWithName:@"Philip Peterson"
+             andWithGender:@"Male"
+             andWithCampus:@"Downtown"
+             andWithRole:@"Professor"
+             andWithTeachingSpec:@"English"
+             andWithDepartment:@"Humanities"];
         
         // add them to the array
         [mdcPeople addObject:jim];
@@ -45,10 +92,16 @@ int main(int argc, const char * argv[]) {
         // polymoprphism
         for(Person *someone in mdcPeople)
         {
-            NSLog(@"%@", someone);
+            NSLog(@"\nI am %@, a %@ ",
+                  [someone getPersonName],
+                  [someone getPersonGender]);
+                    [someone moreInfo];
+            
+                  
+                  //NSLog(@"I specialize in %@ in the %@ department.",
+                  //[someone getTeachingSpec],
+                  //[someone getDepartment]);
         }
-        
-        
         
         
         
